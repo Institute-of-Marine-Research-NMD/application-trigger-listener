@@ -29,6 +29,12 @@ public class ApplicationConfig {
         return configuration;
     }
 
+    /**
+     * Active mq configuration
+     *
+     * @return
+     * @throws ConfigurationException
+     */
     @Bean(name = "activeMQConf")
     public PropertiesConfiguration getActiveMQConfiguration() throws ConfigurationException {
         PropertiesConfiguration conf = new PropertiesConfiguration(System.getProperty("catalina.base") + "/conf/activemq.properties");

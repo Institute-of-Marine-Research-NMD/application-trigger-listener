@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import org.apache.commons.dbcp.DelegatingConnection;
 import org.postgresql.PGConnection;
 import org.postgresql.PGNotification;
@@ -22,7 +20,14 @@ public class TriggerListenerService {
     @Autowired
     private Connection conn;
 
-    public String listen() throws SQLException, InterruptedException {
+    /**
+     * Method that collects messages from the postgresql data queue and returns
+     * them
+     *
+     * @return
+     * @throws SQLException
+     */
+    public String listen() throws SQLException {
         StringBuilder messages = new StringBuilder();
         PGConnection pgConn = (PGConnection) ((DelegatingConnection) conn).getInnermostDelegate();
 

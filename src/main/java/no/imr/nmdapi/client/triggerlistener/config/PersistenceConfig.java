@@ -7,7 +7,6 @@ import javax.sql.DataSource;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -40,6 +39,13 @@ public class PersistenceConfig {
         return dataSource;
     }
 
+    /**
+     * Connection used for gathering messages. It listens to the correct message
+     * queue
+     *
+     * @return
+     * @throws SQLException
+     */
     @Bean
     public Connection connection() throws SQLException {
         Connection conn = dataSource().getConnection();

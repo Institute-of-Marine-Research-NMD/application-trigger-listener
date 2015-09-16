@@ -1,10 +1,7 @@
 package no.imr.nmdapi.client.triggerlistener.config;
 
 import org.apache.camel.Predicate;
-import org.apache.camel.builder.ExpressionBuilder;
-import org.apache.camel.builder.PredicateBuilder;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.language.simple.SimpleLanguage;
 import org.apache.camel.spring.javaconfig.SingleRouteCamelConfiguration;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Configuration;
