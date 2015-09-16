@@ -36,7 +36,7 @@ public class TriggerListenerService {
         rs.close();
         selectStatement.close();
 
-        PGNotification notifications[] = pgConn.getNotifications();
+        PGNotification[] notifications = pgConn.getNotifications();
         boolean first = true;
         if (notifications != null) {
             for (PGNotification pgNotification : notifications) {
