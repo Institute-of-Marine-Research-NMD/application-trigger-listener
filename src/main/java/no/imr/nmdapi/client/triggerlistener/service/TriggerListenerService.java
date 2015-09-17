@@ -7,6 +7,8 @@ import java.sql.Statement;
 import org.apache.commons.dbcp.DelegatingConnection;
 import org.postgresql.PGConnection;
 import org.postgresql.PGNotification;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,11 @@ import org.springframework.stereotype.Service;
  */
 @Service("triggerListener")
 public class TriggerListenerService {
+
+    /**
+     * Class logger.
+     */
+    private static final Logger LOGGER = LoggerFactory.getLogger(TriggerListenerService.class);
 
     @Autowired
     private Connection conn;
@@ -43,6 +50,7 @@ public class TriggerListenerService {
                 if (!first) {
                     messages.append(";");
                 }
+                LOGGER.info("Listener listened and found: ".concat(pgNotification.getParameter()));
                 messages.append(pgNotification.getParameter());
                 first = false;
             }
