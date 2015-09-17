@@ -7,3 +7,4 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 /src/main/tomcatconf/trigger_listener.properties
+/src/main/tomcatconf/s2d_connection.properties

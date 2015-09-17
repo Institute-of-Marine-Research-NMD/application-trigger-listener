@@ -30,14 +30,10 @@ public class CamelConfig extends SingleRouteCamelConfiguration implements Initia
                         .to("triggerListener")
                         .split(body(String.class).tokenize(";"))
                         .choice()
-                        .when(reference)
-                        .to("jms:queue:export-nmdreference")
-                        .when(mission)
-                        .to("jms:queue:export-nmdreference")
-                        .when(biotic)
-                        .to("jms:queue:export-nmdbiotic")
-                        .when(echosounder)
-                        .to("jms:queue:export-nmdechosounder")
+                        .when(reference).to("jms:queue:export-nmdreference")
+                        .when(mission).to("jms:queue:export-nmdreference")
+                        .when(biotic).to("jms:queue:export-nmdbiotic")
+                        .when(echosounder).to("jms:queue:export-nmdechosounder")
                         .to("log:end?level=INFO");
             }
         };

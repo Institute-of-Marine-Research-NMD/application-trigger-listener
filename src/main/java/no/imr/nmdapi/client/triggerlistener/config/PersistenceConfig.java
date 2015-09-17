@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -19,6 +20,7 @@ import org.springframework.context.annotation.Configuration;
 public class PersistenceConfig {
 
     @Autowired
+    @Qualifier("persistanceConfig")
     private PropertiesConfiguration configuration;
 
     /**
@@ -50,7 +52,7 @@ public class PersistenceConfig {
     public Connection connection() throws SQLException {
         Connection conn = dataSource().getConnection();
         Statement listenStatement = conn.createStatement();
-        listenStatement.execute("LISTEN mymessage");
+        listenStatement.execute("LISTEN exporttrigger");
         listenStatement.close();
         return conn;
     }
