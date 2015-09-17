@@ -27,6 +27,12 @@ public class ApplicationConfig {
         return conf;
     }
 
+    /**
+     * Persistance configuration
+     *
+     * @return
+     * @throws ConfigurationException
+     */
     @Bean(name = "persistanceConfig")
     public PropertiesConfiguration persistanceConfig() throws ConfigurationException {
         PropertiesConfiguration conf = new PropertiesConfiguration(System.getProperty("catalina.base") + "/conf/s2d_connection.properties");
