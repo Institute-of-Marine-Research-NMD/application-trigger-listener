@@ -134,7 +134,7 @@
     </dependencies>
 
     <build>
-        <finalName>triggerListener</finalName>
+        <finalName>s2dtriggerListener</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

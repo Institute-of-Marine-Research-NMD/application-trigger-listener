@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 import org.apache.commons.dbcp.DelegatingConnection;
 import org.postgresql.PGConnection;
 import org.postgresql.PGNotification;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,12 +19,15 @@ import org.springframework.stereotype.Service;
  */
 @Service("triggerListener")
 public class TriggerListenerService {
-    
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(TriggerListenerService.class);
-    
+
+    /**
+     * Class logger.
+     */
+    private static final Logger LOGGER = LoggerFactory.getLogger(TriggerListenerService.class);
+
     @Autowired
     private DataSource dataSource;
-    
+
     private Connection conn;
 
     /**
@@ -34,7 +38,7 @@ public class TriggerListenerService {
      * @throws SQLException
      */
     public String listen() throws SQLException {
-        
+
         StringBuilder messages = new StringBuilder();
         LOGGER.info("Checking for new messages");
         try {
@@ -45,12 +49,12 @@ public class TriggerListenerService {
                 listenStatement.close();
             }
             PGConnection pgConn = (PGConnection) ((DelegatingConnection) conn).getInnermostDelegate();
-            
+
             Statement selectStatement = conn.createStatement();
             ResultSet rs = selectStatement.executeQuery("SELECT 1");
             rs.close();
             selectStatement.close();
-            
+
             PGNotification[] notifications = pgConn.getNotifications();
             boolean first = true;
             if (notifications != null) {
@@ -58,9 +62,11 @@ public class TriggerListenerService {
                     if (!first) {
                         messages.append(";");
                     }
+                    LOGGER.info("Listener listened and found: ".concat(pgNotification.getParameter()));
                     messages.append(pgNotification.getParameter());
                     first = false;
                 }
+
             }
         } catch (SQLException ex) {
             LOGGER.error("Something wrong with the connection", ex);
