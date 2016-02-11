@@ -4,7 +4,7 @@
 
     <groupId>no.imr.nmdapi.client.apps</groupId>
     <artifactId>dbTriggerListener</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
     <packaging>war</packaging>
     <name>Application - Trigger Listener</name>
 
@@ -360,7 +360,7 @@
         <connection>scm:git:git@github.com:Institute-of-Marine-Research-NMD/application-trigger-listener.git</connection>
         <url>scm:git:git@github.com:Institute-of-Marine-Research-NMD/application-trigger-listener.git</url>
         <developerConnection>scm:git:git@github.com:Institute-of-Marine-Research-NMD/application-trigger-listener.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>dbTriggerListener-1.0.1</tag>
     </scm>
     <distributionManagement>
         <repository>
