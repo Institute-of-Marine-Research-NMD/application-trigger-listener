@@ -4,7 +4,7 @@
 
     <groupId>no.imr.nmdapi.client.apps</groupId>
     <artifactId>dbTriggerListener</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Application - Trigger Listener</name>
 
