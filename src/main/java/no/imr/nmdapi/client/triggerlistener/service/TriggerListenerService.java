@@ -40,7 +40,6 @@ public class TriggerListenerService {
     public String listen() throws SQLException {
 
         StringBuilder messages = new StringBuilder();
-        LOGGER.info("Checking for new messages");
         try {
             if (conn == null) {
                 conn = dataSource.getConnection();
